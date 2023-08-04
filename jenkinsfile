@@ -15,7 +15,9 @@ stages
 	{
 	steps{
 		echo "testing the project......."
-		sh mvn clean install
+		script{
+		        sh mvn clean install
+		}
 	}
 	}
 
