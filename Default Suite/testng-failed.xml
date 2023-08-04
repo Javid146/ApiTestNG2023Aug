@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Default Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="ApiTestNG2023Aug(failed)">
+    <classes>
+      <class name="day_8.GetUser">
+        <methods>
+          <include name="test_getUser" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- day_8.GetUser -->
+      <class name="day_7.Authentications">
+        <methods>
+          <include name="testOauth1Auth"/>
+        </methods>
+      </class> <!-- day_7.Authentications -->
+      <class name="day_8.UpdateUser">
+        <methods>
+          <include name="test_getUser" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- day_8.UpdateUser -->
+      <class name="day_3.CookiesDemo">
+        <methods>
+          <include name="testCookie"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- day_3.CookiesDemo -->
+      <class name="day_2.WaysOfPostRequest">
+        <methods>
+          <include name="testDelete"/>
+          <include name="testPostUsingExternalJson"/>
+          <include name="testPostWithJsonLibrary"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- day_2.WaysOfPostRequest -->
+      <class name="day_4.ParsingJsonResponseData">
+        <methods>
+          <include name="setup"/>
+          <include name="testJsonResponse"/>
+          <include name="testJsonResponsePrice"/>
+        </methods>
+      </class> <!-- day_4.ParsingJsonResponseData -->
+      <class name="day_6.JSONSchemaValidation">
+        <methods>
+          <include name="setup"/>
+          <include name="jsonSchemaValidation"/>
+        </methods>
+      </class> <!-- day_6.JSONSchemaValidation -->
+    </classes>
+  </test> <!-- ApiTestNG2023Aug(failed) -->
+</suite> <!-- Failed suite [Default Suite] -->
