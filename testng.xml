@@ -3,13 +3,9 @@
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="Test 1">
         <classes>
-            <class name="day_8.CreateUser">
+            <class name="day_7.Authentications">
             </class>
-            <class name="day_8.GetUser">
-            </class>
-            <class name="day_8.UpdateUser">
-            </class>
-            <class name="day_8.DeleteUser">
+            <class name="day_7.FakerDataGenerator">
             </class>
         </classes>
     </test>
