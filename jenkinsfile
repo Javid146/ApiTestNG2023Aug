@@ -2,8 +2,7 @@ pipeline {
     agent any
 
 parameters {
-         choice(name: 'TESTNG_XML', choices: ['testng.xml', 'suite.xml'] )
-}
+         choice(name: 'TESTNG_XML', choices: ['testng.xml', 'suite.xml'])
 }
 stages
 	{
