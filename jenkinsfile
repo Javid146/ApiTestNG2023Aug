@@ -1,9 +1,6 @@
 pipeline {
     agent any
 
-parameters {
-         choice(name: 'TESTNG_XML', choices: ['testng.xml', 'suite.xml'])
-}
 stages
 	{
 	stage("Build")
@@ -17,9 +14,6 @@ stages
 	{
 	steps{
 		echo "testing the project......."
-		script{
-		        sh mvn clean install
-		}
 	}
 	}
 
