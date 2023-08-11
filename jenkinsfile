@@ -20,7 +20,7 @@ script{
 	steps{
 		echo "testing the project......."
 script{
-	bat "mvn clean test -DsuiteXmlFile=ApiTestNG2023Aug/suite.xml"
+	bat "mvn clean test -DsuiteXmlFile=suite.xml"
 	}
 	}}
    }
