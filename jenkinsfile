@@ -23,7 +23,7 @@ pipeline {
                         suiteXmlFile = "testng.xml"
                     }
 
-                    bat 'mvn clean test -DsuiteXmlFile=${suiteXmlFile}'
+                    bat 'mvn clean test -DsuiteXmlFile=${suiteXmlFile1}'
                 }
             }
         }
