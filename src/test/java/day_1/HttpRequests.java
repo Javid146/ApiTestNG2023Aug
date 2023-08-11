@@ -1,33 +1,54 @@
 package day_1;
 
+import com.relevantcodes.extentreports.LogStatus;
+import io.restassured.filter.log.RequestLoggingFilter;
+import io.restassured.response.Response;
+import org.apache.commons.io.output.WriterOutputStream;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.io.PrintStream;
+import java.io.StringWriter;
 import java.util.HashMap;
 
-import static io.restassured.RestAssured.*;
-import static org.hamcrest.Matchers.*;
+import static io.restassured.RestAssured.baseURI;
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+
+public class HttpRequests extends ExtentReport{
+
+//    private static final Logger logger = LogManager.getLogger(HttpRequests.class);
 
 
-public class HttpRequests {
     int id;
-
 
     @BeforeMethod
     public void setup() {
         baseURI = "https://reqres.in";
+        test = extentReports.startTest("Get HttpRequests Test");
+        requestWriter = new StringWriter();
+        requestCapture = new PrintStream(new WriterOutputStream(requestWriter));
     }
 
 
     @Test(priority = 1)
     public void getUsers() {
-        given()
+       Response response = given().filter(new RequestLoggingFilter(requestCapture))
                 .when()
-                .get("api/users?page=2")
-                .then()
+                .get("api/users?page=2");
+
+                response.then()
                 .statusCode(200)
                 .body("page", equalTo(2))
-                .log().all();
+                .log().body();
+
+        System.out.println();
+        System.out.println();
+        System.out.println("LOGGER------------------------------------------");
+
+//        logger.debug("Request and response details: " + response.getBody());
+
     }
 
 
@@ -38,7 +59,7 @@ public class HttpRequests {
         data.put("name", "javid");
         data.put("position", "SDET");
 
-        id = given()
+        id = given().filter(new RequestLoggingFilter(requestCapture))
                 .contentType("application/json")
                 .body(data)
                 .when()
@@ -53,7 +74,7 @@ public class HttpRequests {
         data.put("name", "cucu");
         data.put("position", "tax");
 
-        given()
+        given().filter(new RequestLoggingFilter(requestCapture))
                 .contentType("application/json")
                 .body(data)
                 .when()
@@ -64,11 +85,19 @@ public class HttpRequests {
 
     @Test(priority = 4)
     public void deleteUser() {
-        given()
+        given().filter(new RequestLoggingFilter(requestCapture))
                 .when()
                 .delete("/api/users/" + id)
                 .then()
                 .statusCode(204)
                 .log().all();
+    }
+
+    @AfterMethod
+    public void tearDown() {
+        requestCapture.flush();
+        System.out.println("Request: "+requestWriter.toString());
+        test.log(LogStatus.INFO, "Request : "+ requestWriter.toString());
+        extentReports.endTest(test);
     }
 }
