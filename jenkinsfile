@@ -4,10 +4,6 @@ pipeline {
         maven 'Maven'
     }
 
-    parameters {
-        choice(name: 'TEST_TYPE', choices: ['Smoke', 'Regression'], description: 'Choose test type to run')
-    }
-
     stages {
         stage("Build") {
             steps {
@@ -24,28 +20,10 @@ pipeline {
                 script {
                     def suiteXmlFile = "suite.xml" // Default to smoke test
 
-                    if (params.TEST_TYPE == 'Regression') {
-                        suiteXmlFile = "testng.xml"
-                    }
-
                     sh 'mvn clean test -DsuiteXmlFile=${suiteXmlFile}'
                 }
             }
         }
     }
-
-    post {
-        failure {
-            emailext body: "Failed tests. Please go to console",
-            attachLog: true,
-            subject: "${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - Failed",
-            to: "mammadli.javid15@gmail.com"
-        }
-        success {
-            emailext body: "Success, see CONSOLE",
-            attachLog: true,
-            subject: "${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - Successful",
-            to: "mammadli.javid15@gmail.com"
-        }
-    }
+ 
 }
