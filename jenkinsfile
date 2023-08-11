@@ -29,9 +29,9 @@ post {
             emailext body: "failed tests. Please go to console",
 	    attachLog: false,
             attachmentsPattern: 'target/surefire-reports/smokeSuite/ILOTApplicationSmokeTests.html',
-	   subject: "Failed",
+           subject: "${env.JOB_NAME}-Build # ${env.BUILD_NUMBER}--Successful",
            mimeType: 'text/html',
-           to: "mamadli.javid@gmail.com"
+           to: "mammadli.javid15@gmail.com"
     }
     success {
            emailext body: "Success, see CONSOLE",
@@ -39,7 +39,7 @@ post {
            attachmentsPattern: 'target/surefire-reports/smokeSuite/ILOTApplicationSmokeTests.html',
            subject: "${env.JOB_NAME}-Build # ${env.BUILD_NUMBER}--Successful",
            mimeType: 'text/html',
-           to: "mamadli.javid@gmail.com"
+           to: "mammadli.javid15@gmail.com"
     }
 }
 }
