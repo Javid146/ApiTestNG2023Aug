@@ -29,13 +29,13 @@ post {
             emailext attachLog: false,
             attachmentsPattern: 'target/surefire-reports/smokeSuite/ILOTApplicationSmokeTests.html',
            mimeType: 'text/html',
-           to: mamadli.javid@gmail.com
+           to: "mamadli.javid@gmail.com"
     }
     success {
            emailext attachLog: false,
            attachmentsPattern: 'target/surefire-reports/smokeSuite/ILOTApplicationSmokeTests.html',
            subject: "${env.JOB_NAME}-Build # ${env.BUILD_NUMBER}--Successful",
            mimeType: 'text/html',
-           to: mamadli.javid@gmail.com
+           to: "mamadli.javid@gmail.com"
     }
 }
