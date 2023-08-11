@@ -13,7 +13,7 @@ pipeline {
             steps {
                 echo "Building the project..."
                 script {
-                    bat "mvn clean package"
+                    sh 'mvn clean package'
                 }
             }
         }
@@ -25,10 +25,10 @@ pipeline {
                     def suiteXmlFile = "suite.xml" // Default to smoke test
 
                     if (params.TEST_TYPE == 'Regression') {
-                        suiteXmlFile = "regression.xml"
+                        suiteXmlFile = "testng.xml"
                     }
 
-                    bat "mvn clean test -DsuiteXmlFile=${suiteXmlFile}"
+                    sh 'mvn clean test -DsuiteXmlFile=${suiteXmlFile}'
                 }
             }
         }
