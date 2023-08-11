@@ -32,7 +32,6 @@ post {
            to: mamadli.javid@gmail.com
     }
     success {
-        emailext body: "${env.JOB_NAME}-Build # ${env.BUILD_NUMBER}--Successful.Detail Result please refer to attachments",
            attachLog: false,
            attachmentsPattern: 'target/surefire-reports/smokeSuite/ILOTApplicationSmokeTests.html',
            subject: "${env.JOB_NAME}-Build # ${env.BUILD_NUMBER}--Successful",
