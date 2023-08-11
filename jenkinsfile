@@ -26,14 +26,18 @@ script{
 
 post {
     failure {
-            emailext attachLog: false,
+            emailext body: "failed tests. Please go to console",
+	    attachLog: false,
             attachmentsPattern: 'target/surefire-reports/smokeSuite/ILOTApplicationSmokeTests.html',
+	   subject: "Failed",
            mimeType: 'text/html',
            to: "mamadli.javid@gmail.com"
     }
     success {
-           emailext attachLog: false,
+           emailext body: "Success, see CONSOLE",
+	   attachLog: false,
            attachmentsPattern: 'target/surefire-reports/smokeSuite/ILOTApplicationSmokeTests.html',
+	   subject: "Succeeded",
            subject: "${env.JOB_NAME}-Build # ${env.BUILD_NUMBER}--Successful",
            mimeType: 'text/html',
            to: "mamadli.javid@gmail.com"
