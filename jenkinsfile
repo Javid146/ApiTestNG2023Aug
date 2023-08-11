@@ -38,10 +38,6 @@ pipeline {
         }
         success {
         mail bcc: '', body: '', cc: '', from: '', replyTo: '', subject: '${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - Success', to: 'mamadli.javid@gmail.com, mammadli.javid15@gmail.com'
-            emailext body: "Success, see CONSOLE",
-            attachLog: true,
-            subject: "${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - Successful",
-            to: "mammadli.javid15@gmail.com"
         }
     }
 }
