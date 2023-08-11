@@ -1,4 +1,4 @@
-pipeline {
+fpipeline {
     agent any
 tools{
         maven 'Maven'
@@ -26,13 +26,13 @@ script{
 
 post {
     failure {
-            attachLog: false,
+            emailext attachLog: false,
             attachmentsPattern: 'target/surefire-reports/smokeSuite/ILOTApplicationSmokeTests.html',
            mimeType: 'text/html',
            to: mamadli.javid@gmail.com
     }
     success {
-           attachLog: false,
+           emailext attachLog: false,
            attachmentsPattern: 'target/surefire-reports/smokeSuite/ILOTApplicationSmokeTests.html',
            subject: "${env.JOB_NAME}-Build # ${env.BUILD_NUMBER}--Successful",
            mimeType: 'text/html',
