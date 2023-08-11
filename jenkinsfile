@@ -4,23 +4,29 @@ pipeline {
         maven 'Maven'
     }
 
-    stages {
-        stage("Build") {
+ stages {
+
+ stage("SCM Checkout"){
+            steps{
+            git 'https://github.com/samben01/KarateWithJenkins.git'
+            }
+            }
+ stage("Build") {
             steps {
                 echo "Building the project..."
                 script {
-                    sh 'mvn clean package'
+                    bat "mvn clean package"
                 }
             }
         }
 
-        stage("Test") {
+stage("Test") {
             steps {
                 echo "Testing the project..."
                 script {
                     def suiteXmlFile = "suite.xml" // Default to smoke test
 
-                    sh 'mvn clean test -DsuiteXmlFile=${suiteXmlFile}'
+                    bat "mvn clean test -DsuiteXmlFile=${suiteXmlFile}"
                 }
             }
         }
