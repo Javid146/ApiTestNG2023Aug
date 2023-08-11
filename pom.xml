@@ -38,7 +38,7 @@
                         <configuration>
                             <suiteXmlFiles>
                                 <!--suppress UnresolvedMavenProperty -->
-                                <suiteXmlFile>${suiteXmlFile1}</suiteXmlFile>
+                                <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
                                 <!--                                        <suiteXmlFile>testng.xml</suiteXmlFile>-->
                                 <!--                                        <suiteXmlFile>suite.xml</suiteXmlFile>-->
                             </suiteXmlFiles>
