@@ -36,36 +36,8 @@
                        </configuration>
                 </plugin>
 
-
-<!--                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>3.0.0-M5</version>
-                        <executions>
-                            <execution>
-                                <id>run-suites</id>
-                                <goals>
-                                    <goal>test</goal>
-                                </goals>
-                                <configuration>
-                                    <suiteXmlFiles>
-                                        <!--suppress UnresolvedMavenProperty -->
-                                        <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
-                                    </suiteXmlFiles>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin> -->
-
                 </plugins>
             </build>
-
-
-
-
-
-
-
 
     <dependencies>
                 <dependency>
