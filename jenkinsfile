@@ -17,10 +17,13 @@ pipeline {
             steps {
                 echo "Testing the project..."
                 script {
-                    def suiteXmlFile = "suite.xml" // Default to smoke test
+                    def suiteXmlFile // Default to smoke test
 
                     if (params.TEST_TYPE == 'Regression') {
                         suiteXmlFile = "testng.xml"
+                    }
+                  if (params.TEST_TYPE == 'Smoke') {
+                        suiteXmlFile = "suite.xml"
                     }
 
                     bat 'mvn clean test -DsuiteXmlFile=${suiteXmlFile}'
