@@ -1,55 +1,51 @@
 pipeline {
     agent any
-tools{
+    tools {
         maven 'Maven'
     }
 
-  parameters {
+    parameters {
         choice(name: 'TEST_TYPE', choices: ['Smoke', 'Regression'], description: 'Choose test type to run')
     }
-stages
-	{
-	stage("Build")
-	{
-	steps{
-		echo "building the project......................................"
-script{
-	bat "mvn clean package"
-	}
-	      }}
 
-	stage("Test")
-	{
-	steps{
-		echo "testing the project......................................."
-script { 
-                    def suiteXmlFile = "suite.xml" //by default runs smoke test
-                    
+    stages {
+        stage("Build") {
+            steps {
+                echo "Building the project..."
+                script {
+                    bat "mvn clean package"
+                }
+            }
+        }
+
+        stage("Test") {
+            steps {
+                echo "Testing the project..."
+                script {
+                    def suiteXmlFile = "suite.xml" // Default to smoke test
+
                     if (params.TEST_TYPE == 'Regression') {
                         suiteXmlFile = "regression.xml"
                     }
-                    
+
                     bat "mvn clean test -DsuiteXmlFile=${suiteXmlFile}"
                 }
-	}}
-   }
+            }
+        }
+    }
 
-post {
-    failure {
-            emailext body: "failed tests. Please go to console",
-	    attachLog: false,
-            attachmentsPattern: 'target/surefire-reports/OrionApiSmokeTests.html',
-           subject: "${env.JOB_NAME}-Build # ${env.BUILD_NUMBER}--Successful",
-           mimeType: 'text/html',
-           to: "mammadli.javid15@gmail.com"
+    post {
+        failure {
+            emailext body: "Failed tests. Please go to console",
+            attachLog: true,
+            subject: "${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - Failed",
+            to: "mammadli.javid15@gmail.com"
+        }
+        success {
+            emailext body: "Success, see CONSOLE",
+            attachLog: true,
+            subject: "${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - Successful",
+            to: "mammadli.javid15@gmail.com"
+        }
     }
-    success {
-           emailext body: "Success, see CONSOLE",
-	   attachLog: false,
-           attachmentsPattern: 'target/surefire-reports/OrionApiSmokeTests.html',
-           subject: "${env.JOB_NAME}-Build # ${env.BUILD_NUMBER}--Successful",
-           mimeType: 'text/html',
-           to: "mammadli.javid15@gmail.com"
-    }
-}
 }
