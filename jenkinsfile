@@ -1,4 +1,4 @@
-fpipeline {
+pipeline {
     agent any
 tools{
         maven 'Maven'
@@ -38,4 +38,5 @@ post {
            mimeType: 'text/html',
            to: "mamadli.javid@gmail.com"
     }
+}
 }
