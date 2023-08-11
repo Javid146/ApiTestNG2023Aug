@@ -38,7 +38,7 @@
                         <configuration>
                             <suiteXmlFiles>
                                 <!--suppress UnresolvedMavenProperty -->
-                                <suiteXmlFile>${project.basedir}/${suiteXmlFile}</suiteXmlFile>
+                                <suiteXmlFile>${project.basedir}/${suiteXmlFile1}</suiteXmlFile>
                                 <!--                                        <suiteXmlFile>testng.xml</suiteXmlFile>-->
                                 <!--                                        <suiteXmlFile>suite.xml</suiteXmlFile>-->
                             </suiteXmlFiles>
