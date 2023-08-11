@@ -5,7 +5,7 @@ tools{
     }
 
   parameters {
-        choice(name: 'TEST_TYPE', choices: ['smoke', 'regression'], description: 'Choose test type to run')
+        choice(name: 'TEST_TYPE', choices: ['Smoke', 'Regression'], description: 'Choose test type to run')
     }
 stages
 	{
