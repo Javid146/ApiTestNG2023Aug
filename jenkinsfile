@@ -10,7 +10,7 @@ stages
 	steps{
 		echo "building the project......."
 script{
-	bat 'mvn clean package'
+	bat "mvn clean package"
 	}
 	      }
 	}
@@ -20,7 +20,7 @@ script{
 	steps{
 		echo "testing the project......."
 script{
-	bat 'mvn clean test -DsuiteXmlFile=suite.xml'
+	bat "mvn clean test -DsuiteXmlFile=C:\Users\mamma\IdeaProjects\ApiTestNG2023Aug\suite.xml"
 	}
 	}}
    }
