@@ -12,8 +12,7 @@ stages
 script{
 	bat "mvn clean package"
 	}
-	      }
-	}
+	      }}
 
 	stage("Test")
 	{
@@ -24,4 +23,20 @@ script{
 	}
 	}}
    }
+
+post {
+    failure {
+            attachLog: false,
+            attachmentsPattern: 'target/surefire-reports/smokeSuite/ILOTApplicationSmokeTests.html',
+           mimeType: 'text/html',
+           to: mamadli.javid@gmail.com
+    }
+    success {
+        emailext body: "${env.JOB_NAME}-Build # ${env.BUILD_NUMBER}--Successful.Detail Result please refer to attachments",
+           attachLog: false,
+           attachmentsPattern: 'target/surefire-reports/smokeSuite/ILOTApplicationSmokeTests.html',
+           subject: "${env.JOB_NAME}-Build # ${env.BUILD_NUMBER}--Successful",
+           mimeType: 'text/html',
+           to: mamadli.javid@gmail.com
+    }
 }
