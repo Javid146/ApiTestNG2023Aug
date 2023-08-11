@@ -22,19 +22,7 @@
                             <source>1.8</source>
                             <target>1.8</target>
                         </configuration>
-                    </plugin>  
-
-<!--                    <plugin>-->
-<!--                        <groupId>org.apache.maven.plugins</groupId>-->
-<!--                        <artifactId>maven-surefire-plugin</artifactId>-->
-<!--                        <version>3.0.0-M4</version>-->
-<!--                  <configuration>-->
-<!--                            <suiteXmlFiles>-->
-<!--                                <suiteXmlFile>testng.xml</suiteXmlFile>-->
-<!--                                <suiteXmlFile>suite.xml</suiteXmlFile>-->
-<!--                            </suiteXmlFiles>-->
-<!--                        </configuration>-->
-<!--                    </plugin>-->
+                    </plugin>
 
 
                     <plugin>
@@ -51,6 +39,8 @@
                                     <suiteXmlFiles>
                                         <!--suppress UnresolvedMavenProperty -->
                                         <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+<!--                                        <suiteXmlFile>testng.xml</suiteXmlFile>-->
+<!--                                        <suiteXmlFile>suite.xml</suiteXmlFile>-->
                                     </suiteXmlFiles>
                                 </configuration>
                             </execution>
@@ -59,13 +49,6 @@
 
                 </plugins>
             </build>
-
-
-
-
-
-
-
 
     <dependencies>
                 <dependency>
