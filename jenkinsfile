@@ -22,8 +22,8 @@ script{
 	{
 	steps{
 		echo "testing the project......................................."
-script {
-                    def suiteXmlFile = "smoke.xml"
+script { 
+                    def suiteXmlFile = "suite.xml" //by default runs smoke test
                     
                     if (params.TEST_TYPE == 'Regression') {
                         suiteXmlFile = "regression.xml"
