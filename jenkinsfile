@@ -3,12 +3,16 @@ pipeline {
 tools{
         maven 'Maven'
     }
+
+  parameters {
+        choice(name: 'TEST_TYPE', choices: ['smoke', 'regression'], description: 'Choose test type to run')
+    }
 stages
 	{
 	stage("Build")
 	{
 	steps{
-		echo "building the project......."
+		echo "building the project......................................"
 script{
 	bat "mvn clean package"
 	}
@@ -17,10 +21,16 @@ script{
 	stage("Test")
 	{
 	steps{
-		echo "testing the project......."
-script{
-	bat "mvn clean test -DsuiteXmlFile=${suiteXmlFile}" 
-	}
+		echo "testing the project......................................."
+script {
+                    def suiteXmlFile = "smoke.xml"
+                    
+                    if (params.TEST_TYPE == 'Regression') {
+                        suiteXmlFile = "regression.xml"
+                    }
+                    
+                    bat "mvn clean test -DsuiteXmlFile=${suiteXmlFile}"
+                }
 	}}
    }
 
