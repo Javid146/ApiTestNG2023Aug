@@ -19,7 +19,7 @@ script{
 	steps{
 		echo "testing the project......."
 script{
-	bat "mvn clean test -DsuiteXmlFile=suite.xml"
+	bat "mvn clean test -DsuiteXmlFile=${suiteXmlFile}" 
 	}
 	}}
    }
@@ -28,7 +28,7 @@ post {
     failure {
             emailext body: "failed tests. Please go to console",
 	    attachLog: false,
-            attachmentsPattern: 'target/surefire-reports/smokeSuite/ILOTApplicationSmokeTests.html',
+            attachmentsPattern: 'target/surefire-reports/OrionApiSmokeTests.html',
            subject: "${env.JOB_NAME}-Build # ${env.BUILD_NUMBER}--Successful",
            mimeType: 'text/html',
            to: "mammadli.javid15@gmail.com"
@@ -36,7 +36,7 @@ post {
     success {
            emailext body: "Success, see CONSOLE",
 	   attachLog: false,
-           attachmentsPattern: 'target/surefire-reports/smokeSuite/ILOTApplicationSmokeTests.html',
+           attachmentsPattern: 'target/surefire-reports/OrionApiSmokeTests.html',
            subject: "${env.JOB_NAME}-Build # ${env.BUILD_NUMBER}--Successful",
            mimeType: 'text/html',
            to: "mammadli.javid15@gmail.com"
