@@ -7,6 +7,9 @@ stages
 	{
 	steps{
 		echo "building the project......."
+script{
+	sh 'mvn clean package -U -DskipTests=true'
+	}
 	      }
 	}
 
@@ -14,14 +17,9 @@ stages
 	{
 	steps{
 		echo "testing the project......."
+script{
+	sh 'mvn clean test'
 	}
-	}
-
-	stage("Deploy")
-	{
-	steps{
-		echo "deploying the project......."
-	}
-	}
+	}}
    }
 }
