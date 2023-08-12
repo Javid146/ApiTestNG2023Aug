@@ -37,7 +37,7 @@ pipeline {
         mail bcc: '', body: 'Please visit Console Output to see results', cc: '', from: '', replyTo: '', subject: '${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - Failure', to: 'mamadli.javid@gmail.com, mammadli.javid15@gmail.com'
 }
         success {
-        mail bcc: '', body: 'Please visit Console Output to see results', cc: '', from: '', replyTo: '', subject: '${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - Success', to: 'mamadli.javid@gmail.com, mammadli.javid15@gmail.com'
+        mail bcc: '', body: 'Please visit Console Output to see results', cc: '', from: '', replyTo: '', subject: 'Success', to: 'mamadli.javid@gmail.com, mammadli.javid15@gmail.com'
         }
     }
 }
